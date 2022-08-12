@@ -1,0 +1,230 @@
+* {
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: transparent;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+}
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  
+}
+.wrapper::before, .wrapper::after{
+  width: 120vmin;
+  height: 120vmin;
+  content: "";
+  border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, #ffffff 0%, transparent 100%);
+  position: absolute;
+  border: .5px solid #fff;
+}
+.wrapper::after{
+  width: 40vmin;
+  height: 40vmin;
+  top: 10%;
+  left: 10%;
+}
+.slider{
+  width: 700px;
+  height: 400px;
+  background-color: #fff;
+  z-index: 1;
+  border-radius: 25px;
+  border: 3px solid #fff;
+  overflow: hidden;
+  position: relative;
+}
+.slideImage{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  transform: scale(1.3);
+  transition: .5s;
+}
+.slideImage.active{
+  transform: scale(1);
+  opacity: 1;
+  transition: .5s;
+}
+.slideImage img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+}
+.sliderArrow{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%) scale(1);
+  cursor: pointer;
+  transition: transform .2s;
+}
+.sliderArrow:active{
+  transform: translateY(-50%) scale(1.1);
+  transition: .2s;
+}
+.sliderArrow:hover svg{
+  fill: rgb(56, 56, 56);
+}
+.sliderArrow.right{
+  right: 10%;
+}
+.sliderArrow.left{
+  left: 10%;
+}
+.sliderArrow  svg{
+  width: 100%;
+  height: 100%;
+  fill: aliceblue;
+  pointer-events: none;
+  transition: .2s;
+}
+.dots{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%);
+}
+.dot{
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border-radius: 50px;
+  margin: 5px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: .2s;
+  border: 2px solid #fff;
+}
+.dot:hover{
+  background-color: rgb(36, 36, 36);
+}
+.dot.active{
+  width: 20px;
+  background-color: rgb(36, 36, 36);
+  transform: scale(1.1);
+}
+
+.navBar{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  width: 0%;
+  height: 100%;
+  z-index: 20;
+  transition: .3s;
+}
+.navBar.active{
+  width: 100%;
+  transition: 0s;
+}
+.backWrapper{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.471);
+  position: absolute;
+}
+.navBar .icon{
+  padding: 10px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+  left: 0px;
+  transition: .2s;
+}
+.navBar .icon:hover{
+  color: rgb(36, 36, 36);
+}
+.navBar.active .icon{
+  left: 270px;
+}
+.navContainer{
+  position: absolute;
+  top: 0px;
+  left: -270px;
+  width: 270px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.616);
+  backdrop-filter: blur(5px);
+  border-right: 1px solid #fff;
+  transition: left .2s linear;
+}
+.navContainer.active{
+  left: 0px;
+}
+.navContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+.navContainer .content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #191919;
+  font-size: 20px;
+  text-transform: capitalize;
+  margin: 10px 0px;
+}
+.navContainer .content h4{
+  margin-right: 10px;
+}
+.navContainer .content input{
+  display: none;
+}
+.navContainer .content input:checked+label{
+  background-color: #fff;
+}
+.navContainer .content label{
+  background-color:  transparent;
+  margin: 5px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: .3s;
+}
+.navContainer .content label:hover{
+  background-color: #fff;
+}
+
+
+@media screen and (max-width: 700px) {
+  .slider{
+    width: 500px;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .slider{
+    width: 600px;
+    height: 350px;
+  }
+}
